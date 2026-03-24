@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>مركز المساعدة | روفوف - Rofof</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error": "#ffffff",
+              "secondary-container": "#e42024",
+              "surface-container-low": "#f5f3f2",
+              "surface-bright": "#fbf9f8",
+              "on-surface": "#1b1c1c",
+              "on-secondary-container": "#fffbff",
+              "primary-fixed": "#83faa9",
+              "on-primary-fixed-variant": "#00522a",
+              "inverse-primary": "#66dd8f",
+              "on-tertiary-fixed": "#271900",
+              "tertiary-container": "#986d00",
+              "surface-container-high": "#eae8e7",
+              "tertiary-fixed-dim": "#ffba20",
+              "surface": "#fbf9f8",
+              "on-error-container": "#93000a",
+              "secondary": "#bb0013",
+              "primary": "#006a38",
+              "on-secondary": "#ffffff",
+              "on-secondary-fixed-variant": "#93000c",
+              "outline-variant": "#bdcabc",
+              "secondary-fixed": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-container": "#f6fff4",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-container": "#fffbff",
+              "on-primary": "#ffffff",
+              "background": "#fbf9f8",
+              "on-surface-variant": "#3e4a3f",
+              "on-secondary-fixed": "#410002",
+              "inverse-on-surface": "#f3f0f0",
+              "surface-tint": "#006d39",
+              "tertiary": "#795600",
+              "surface-dim": "#dcd9d9",
+              "on-tertiary-fixed-variant": "#5e4200",
+              "error": "#ba1a1a",
+              "inverse-surface": "#303030",
+              "error-container": "#ffdad6",
+              "surface-container": "#f0eded",
+              "tertiary-fixed": "#ffdea8",
+              "primary-container": "#008648",
+              "surface-container-highest": "#e4e2e1",
+              "surface-variant": "#e4e2e1",
+              "on-primary-fixed": "#00210d",
+              "primary-fixed-dim": "#66dd8f",
+              "on-background": "#1b1c1c",
+              "secondary-fixed-dim": "#ffb4ab",
+              "outline": "#6e7a6e"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans", "IBM Plex Sans Arabic"],
+              "body": ["IBM Plex Sans Arabic", "Inter"],
+              "label": ["Inter", "IBM Plex Sans Arabic"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            background-color: #fbf9f8;
+        }
+        .faq-gradient {
+            background: linear-gradient(135deg, #006a38 0%, #008648 100%);
+        }
+    </style>
+</head>
+<body class="text-on-surface antialiased">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto font-['Plus_Jakarta_Sans'] antialiased">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tight text-emerald-900 dark:text-emerald-100">Rofof</span>
+<div class="hidden md:flex gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition-colors" href="#">About Us</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition-colors" href="#">Contact Us</a>
+<a class="text-emerald-700 dark:text-emerald-400 font-semibold border-b-2 border-emerald-600" href="#">FAQ</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition-colors" href="#">Policies</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<input class="bg-surface-container-low border-none rounded-full px-4 py-2 pr-10 text-sm focus:ring-2 focus:ring-primary w-64" placeholder="البحث في الأسئلة..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+</div>
+<button class="p-2 hover:bg-emerald-50/50 rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-emerald-800" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="p-2 hover:bg-emerald-50/50 rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-emerald-800" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</nav>
+<div class="flex min-h-screen pt-20 max-w-7xl mx-auto">
+<!-- Sidebar Navigation (Mandatory Shared Component) -->
+<aside class="hidden lg:flex flex-col p-4 space-y-2 h-[calc(100vh-5rem)] w-64 border-l border-surface-container-high bg-slate-50 sticky top-20">
+<div class="px-4 py-6 mb-4">
+<h2 class="font-bold text-emerald-800 text-lg">Help Center</h2>
+<p class="text-slate-500 text-xs">Information &amp; Policies</p>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-100 rounded-lg transition-transform hover:translate-x-[-4px]" href="#">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="font-medium text-sm">About Us</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-100 rounded-lg transition-transform hover:translate-x-[-4px]" href="#">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span class="font-medium text-sm">Contact Us</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-emerald-100/50 text-emerald-900 font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="help_center">help_center</span>
+<span class="font-medium text-sm">FAQ</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-100 rounded-lg transition-transform hover:translate-x-[-4px]" href="#">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span class="font-medium text-sm">Privacy Policy</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-100 rounded-lg transition-transform hover:translate-x-[-4px]" href="#">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span class="font-medium text-sm">Terms &amp; Conditions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-100 rounded-lg transition-transform hover:translate-x-[-4px]" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_return">assignment_return</span>
+<span class="font-medium text-sm">Returns Policy</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-6 py-8 md:px-12">
+<!-- Hero Header Section -->
+<header class="mb-12 relative overflow-hidden rounded-xl p-12 faq-gradient text-on-primary shadow-lg">
+<div class="relative z-10 max-w-2xl">
+<h1 class="text-4xl md:text-5xl font-bold mb-4 font-headline leading-tight">كيف يمكننا مساعدتك اليوم؟</h1>
+<p class="text-on-primary-container/80 text-lg mb-8 font-body">ابحث عن إجابات لجميع استفساراتك حول الطلب، الشحن، والخدمات الأخرى في روفوف.</p>
+<div class="relative max-w-md">
+<input class="w-full bg-white text-on-surface border-none rounded-lg py-4 px-6 pr-12 shadow-inner focus:ring-2 focus:ring-secondary-container" placeholder="اكتب سؤالك هنا..." type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary text-2xl">search</span>
+</div>
+</div>
+<div class="absolute -bottom-10 -left-10 w-64 h-64 bg-primary-container rounded-full blur-3xl opacity-30"></div>
+<div class="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDa0--u7ZqzgrF1qZYVkOFOBvgxCdq2TlIGqeQG86_K930ROFTS9ANrCRFCVVcanxYAFMdgItQUjKosrUi_0qafbNUy_kLDPSRuY_fAAZEiuGe_LC3agIkRHZutFqKYKZF6U90MmdXz94lLbPkyyCWBJ-tjlQMnHHSGvF_WpUps8kcAnQPI5kf0XtHnI9Tjb-yvczvUQH88f2U95yxaxB5ArqDDr__O8agCCoi8v1ByrvVwJtkLjbPd5873R94GiWorS1x4yCUd264');"></div>
+</header>
+<!-- FAQ Sections - Bento Grid Style Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- FAQ Accordion Container -->
+<div class="md:col-span-8 space-y-6">
+<!-- Section: Ordering -->
+<section class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+<div class="flex items-center gap-3 mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="shopping_basket">shopping_basket</span>
+<h2 class="text-2xl font-bold font-headline">الطلبات (Ordering)</h2>
+</div>
+<div class="space-y-4">
+<details class="group border-b border-surface-container-high pb-4 open:pb-6 transition-all duration-300">
+<summary class="flex justify-between items-center font-semibold text-lg cursor-pointer list-none py-2 hover:text-primary">
+<span>كيف يمكنني تتبع طلبي؟</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 text-on-surface-variant leading-relaxed font-body">
+                                    يمكنك تتبع طلبك من خلال الانتقال إلى "حسابي" ثم "طلباتي". ستجد هناك تفاصيل حالة الشحن الحالية ورابط تتبع مباشر مع شركة التوصيل.
+                                </div>
+</details>
+<details class="group border-b border-surface-container-high pb-4 open:pb-6 transition-all duration-300">
+<summary class="flex justify-between items-center font-semibold text-lg cursor-pointer list-none py-2 hover:text-primary">
+<span>هل يمكنني تعديل طلبي بعد تأكيده؟</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 text-on-surface-variant leading-relaxed font-body">
+                                    للأسف، لا يمكن تعديل الطلبات بمجرد دخولها مرحلة التجهيز. يمكنك إلغاء الطلب وإعادة الطلب مرة أخرى إذا لم يتم شحنه بعد.
+                                </div>
+</details>
+</div>
+</section>
+<!-- Section: Payment -->
+<section class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+<div class="flex items-center gap-3 mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="payments">payments</span>
+<h2 class="text-2xl font-bold font-headline">الدفع (Payment)</h2>
+</div>
+<div class="space-y-4">
+<details class="group border-b border-surface-container-high pb-4 open:pb-6 transition-all duration-300">
+<summary class="flex justify-between items-center font-semibold text-lg cursor-pointer list-none py-2 hover:text-primary">
+<span>ما هي خيارات الدفع المتاحة؟</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 text-on-surface-variant leading-relaxed font-body">
+                                    نقبل الدفع عبر بطاقات مدى، فيزا، ماستركارد، Apple Pay، بالإضافة إلى خيار الدفع عند الاستلام في مناطق محددة.
+                                </div>
+</details>
+</div>
+</section>
+<!-- Section: Delivery -->
+<section class="bg-surface-container-lowest rounded-xl p-6 shadow-sm">
+<div class="flex items-center gap-3 mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="local_shipping">local_shipping</span>
+<h2 class="text-2xl font-bold font-headline">التوصيل (Delivery)</h2>
+</div>
+<div class="space-y-4">
+<details class="group border-b border-surface-container-high pb-4 open:pb-6 transition-all duration-300">
+<summary class="flex justify-between items-center font-semibold text-lg cursor-pointer list-none py-2 hover:text-primary">
+<span>كم يستغرق توصيل الطلب؟</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 text-on-surface-variant leading-relaxed font-body">
+                                    يستغرق التوصيل عادةً من 24 إلى 48 ساعة داخل المدن الرئيسية، ومن 3 إلى 5 أيام عمل لبقية المناطق.
+                                </div>
+</details>
+</div>
+</section>
+</div>
+<!-- Sidebar Content / Info Cards -->
+<div class="md:col-span-4 space-y-6">
+<div class="bg-primary text-on-primary p-8 rounded-xl relative overflow-hidden group shadow-md">
+<div class="relative z-10">
+<h3 class="text-xl font-bold mb-4 font-headline">تحتاج مساعدة فورية؟</h3>
+<p class="mb-6 opacity-90 text-sm">فريق الدعم الفني متاح على مدار الساعة للإجابة على استفساراتك.</p>
+<button class="bg-white text-primary font-bold py-3 px-6 rounded-lg w-full transition-transform active:scale-95">تحدث معنا الآن</button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-8xl opacity-10 group-hover:scale-110 transition-transform" data-icon="support_agent">support_agent</span>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<h4 class="font-bold mb-4 text-on-surface">روابط سريعة</h4>
+<ul class="space-y-3">
+<li><a class="flex items-center gap-2 text-primary hover:underline text-sm" href="#"><span class="material-symbols-outlined text-sm">description</span> سياسة الخصوصية</a></li>
+<li><a class="flex items-center gap-2 text-primary hover:underline text-sm" href="#"><span class="material-symbols-outlined text-sm">assignment_return</span> سياسة الاسترجاع</a></li>
+<li><a class="flex items-center gap-2 text-primary hover:underline text-sm" href="#"><span class="material-symbols-outlined text-sm">gavel</span> الشروط والأحكام</a></li>
+</ul>
+</div>
+<div class="rounded-xl overflow-hidden aspect-square relative shadow-lg">
+<img alt="Customer Service" class="w-full h-full object-cover" data-alt="friendly customer service representative with a headset smiling and working on a laptop in a bright modern office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqXrP1nfV3GAfNXPOgJlXSO6oDvFmLPHTI5NaMn1dDckBtibZ9rBU_uG2hoImK2E-YdNiun4R2PJ3cMYXIxEGQIxMReaXVNPudUlZ18EEevkBB0dUiktn8zsOjAYVB6m_BffV0Th6e1Waa0nD57czy19gBJrFriAeIIw0R1UVBCMMTs0mQZmNkmhwBGDlBb8XIcgI-wNhjyD4Sgc8pjxc29_HtH1fCKM4D4thyUmiRrav7RxVPlkSGPINVWfmYQhGK7iCnGMtfRSM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
+<span class="text-white font-bold text-lg">تجربة تسوق آمنة وموثوقة</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Additional Sections (Returns, Account, Offers) -->
+<div class="mt-12 space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border-t-4 border-secondary">
+<span class="material-symbols-outlined text-secondary text-3xl mb-4" data-icon="assignment_return">assignment_return</span>
+<h3 class="font-bold text-lg mb-2">الاسترجاع</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">يمكنك استرجاع المنتجات خلال 14 يوماً من تاريخ الاستلام بشرط أن تكون في حالتها الأصلية.</p>
+<a class="mt-4 inline-block text-secondary font-semibold text-sm hover:underline" href="#">المزيد عن السياسة ←</a>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border-t-4 border-primary">
+<span class="material-symbols-outlined text-primary text-3xl mb-4" data-icon="person">person</span>
+<h3 class="font-bold text-lg mb-2">الحساب الشخصي</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">إدارة بياناتك، عناوين الشحن، وتفضيلات الخصوصية من مكان واحد بكل سهولة.</p>
+<a class="mt-4 inline-block text-primary font-semibold text-sm hover:underline" href="#">إدارة حسابي ←</a>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border-t-4 border-tertiary">
+<span class="material-symbols-outlined text-tertiary text-3xl mb-4" data-icon="loyalty">loyalty</span>
+<h3 class="font-bold text-lg mb-2">العروض والخصومات</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">اكتشف أحدث العروض الحصرية وكيفية استخدام كوبونات الخصم في طلباتك.</p>
+<a class="mt-4 inline-block text-tertiary font-semibold text-sm hover:underline" href="#">مشاهدة العروض ←</a>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full border-t border-surface-container-high bg-slate-50 dark:bg-slate-950 mt-20">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-8 py-12 max-w-7xl mx-auto font-['Plus_Jakarta_Sans'] text-xs">
+<div class="space-y-4">
+<span class="font-black text-emerald-900 dark:text-emerald-100 text-2xl">Rofof</span>
+<p class="text-slate-500 max-w-sm">روفوف هو وجهتك الأولى لتسوق أفضل المنتجات المنزلية والأساسيات في الخليج، بجودة عالية وخدمة عملاء استثنائية.</p>
+<p class="text-slate-500">© 2024 Rofof E-Commerce. All rights reserved.</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-3">
+<h4 class="font-bold text-emerald-800 dark:text-emerald-500 text-sm">Resources</h4>
+<nav class="flex flex-col gap-2">
+<a class="text-slate-500 hover:text-emerald-600 transition-all opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-emerald-600 transition-all opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+</nav>
+</div>
+<div class="space-y-3">
+<h4 class="font-bold text-emerald-800 dark:text-emerald-500 text-sm">Settings</h4>
+<nav class="flex flex-col gap-2">
+<a class="text-slate-500 hover:text-emerald-600 transition-all opacity-80 hover:opacity-100" href="#">Cookies Settings</a>
+<a class="text-slate-500 hover:text-emerald-600 transition-all opacity-80 hover:opacity-100" href="#">Accessibility</a>
+</nav>
+</div>
+</div>
+</div>
+</footer>
+<!-- FAB (Contextual for Contacting Support) -->
+<button class="fixed bottom-6 right-6 md:right-auto md:left-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-2xl" data-icon="chat" style="font-variation-settings: 'FILL' 1;">chat</span>
+</button>
+</body></html>

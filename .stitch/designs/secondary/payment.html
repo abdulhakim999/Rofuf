@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>رفوف - وسائل الدفع</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'IBM+Plex+Sans+Arabic', 'Plus Jakarta Sans', sans-serif;
+            background-color: #fbf9f8;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .tonal-shift-bg {
+            background-color: #f0eded;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#303030",
+                        "tertiary": "#795600",
+                        "primary-container": "#008648",
+                        "secondary-fixed-dim": "#ffb4ab",
+                        "primary-fixed": "#83faa9",
+                        "on-primary-fixed-variant": "#00522a",
+                        "surface-container-highest": "#e4e2e1",
+                        "on-surface-variant": "#3e4a3f",
+                        "outline": "#6e7a6e",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#410002",
+                        "tertiary-container": "#986d00",
+                        "on-surface": "#1b1c1c",
+                        "inverse-primary": "#66dd8f",
+                        "surface-dim": "#dcd9d9",
+                        "on-background": "#1b1c1c",
+                        "surface-bright": "#fbf9f8",
+                        "error": "#ba1a1a",
+                        "secondary": "#bb0013",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#eae8e7",
+                        "surface": "#fbf9f8",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f5f3f2",
+                        "on-tertiary-fixed-variant": "#5e4200",
+                        "tertiary-fixed-dim": "#ffba20",
+                        "surface-variant": "#e4e2e1",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#00210d",
+                        "on-secondary-container": "#fffbff",
+                        "background": "#fbf9f8",
+                        "primary": "#006a38",
+                        "primary-fixed-dim": "#66dd8f",
+                        "on-tertiary-container": "#fffbff",
+                        "on-primary-container": "#f6fff4",
+                        "surface-container": "#f0eded",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#271900",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#e42024",
+                        "tertiary-fixed": "#ffdea8",
+                        "on-secondary-fixed-variant": "#93000c",
+                        "surface-tint": "#006d39",
+                        "outline-variant": "#bdcabc",
+                        "inverse-on-surface": "#f3f0f0"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["IBM Plex Sans Arabic"],
+                        "label": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex flex-row-reverse justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-6">
+<h1 class="text-2xl font-bold text-emerald-900 dark:text-emerald-400 tracking-tight font-headline">Rofof</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8 font-['Plus_Jakarta_Sans','IBM_Plex_Sans_Arabic'] font-medium">
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-300 transition-colors active:scale-95 duration-200" href="#">الرئيسية</a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-300 transition-colors active:scale-95 duration-200" href="#">المتجر</a>
+<a class="text-emerald-700 dark:text-emerald-400 font-bold hover:text-emerald-600 dark:hover:text-emerald-300 transition-colors active:scale-95 duration-200" href="#">حسابي</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-zinc-600 hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="p-2 text-zinc-600 hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="p-2 text-zinc-600 hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full overflow-hidden border border-outline-variant/30">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Professional headshot of a person for a user profile avatar with clean soft lighting and neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGO-oXeRcDeIt0WTWFierUi5yfUCXOk3-BJRgNpQLQ6PRyu-_iQBfOiKoFiDPnHf1JylV1OxdHKbdb8sFj_eoKbqgf0U5zDpC2-4_UFfgxKJ0BR6xMmrEYQ9phU0cqcJAVyojnD_eKRqvROnTY0FEt63eD8N3RWhghrxAYgVM7H8YlNP1RZRoNi9W9p4MF0Td24VJ1R0i5RqYAA5r6ep3MpFa0o5lY3GXd6xDcenYdz_TdyCEbtJSFrtQ2mjgx26PpROYGUCWUjvY"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-12 min-h-screen flex max-w-7xl mx-auto px-4 gap-8">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col sticky top-24 h-[calc(100vh-120px)] w-64 p-4 rtl bg-zinc-50 dark:bg-zinc-950 rounded-xl">
+<div class="mb-8 px-4">
+<h3 class="text-lg font-bold text-emerald-900 font-headline">Welcome back</h3>
+<p class="text-zinc-500 text-sm">Manage your account</p>
+</div>
+<nav class="space-y-2 flex-grow">
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="package_2">package_2</span>
+<span class="font-medium">My Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+<span class="font-medium">Saved Addresses</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-zinc-900 text-emerald-700 dark:text-emerald-400 rounded-lg shadow-sm font-bold transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="credit_card" style="font-variation-settings: 'FILL' 1;">credit_card</span>
+<span class="font-medium">Payment Methods</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<button class="mt-auto flex items-center gap-3 px-4 py-3 text-secondary font-bold hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</button>
+</aside>
+<!-- Main Content Area -->
+<section class="flex-grow">
+<div class="mb-10">
+<h2 class="text-3xl font-bold text-emerald-900 mb-2 font-headline">وسائل الدفع</h2>
+<p class="text-on-surface-variant">قم بإدارة بطاقاتك ووسائل الدفع المفضلة لتجربة تسوق أسرع.</p>
+</div>
+<!-- Bento Grid Layout for Payment Methods -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Card 1: Visa -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-6 rounded-xl shadow-sm group hover:shadow-md transition-all duration-300 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors"></div>
+<div class="flex justify-between items-start mb-12">
+<div class="flex items-center gap-4">
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="credit_card">credit_card</span>
+</div>
+<div>
+<h4 class="font-bold text-lg">البطاقة الرئيسية</h4>
+<p class="text-xs text-on-surface-variant font-label">VISA • بنك الراجحي</p>
+</div>
+</div>
+<span class="bg-primary-container text-on-primary-container text-xs px-3 py-1 rounded-full font-bold">افتراضية</span>
+</div>
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<p class="text-xl font-bold tracking-[0.2em] font-label">•••• •••• •••• 4592</p>
+<p class="text-sm text-on-surface-variant uppercase font-label">Expires 09/26</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error/10 rounded-full transition-colors text-error">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Add New Card CTA -->
+<button class="bg-primary/5 border-2 border-dashed border-primary/20 hover:border-primary/50 hover:bg-primary/10 transition-all rounded-xl flex flex-col items-center justify-center p-8 gap-4 group">
+<div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+</div>
+<span class="font-bold text-primary">إضافة بطاقة جديدة</span>
+</button>
+<!-- Card 2: Mada -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:shadow-md transition-all">
+<div class="flex justify-between items-start mb-8">
+<div class="flex items-center gap-3">
+<div class="bg-[#0033a015] p-2 rounded-lg">
+<span class="material-symbols-outlined text-[#0033a0] text-2xl" data-icon="payments">payments</span>
+</div>
+<div>
+<h4 class="font-bold">بطاقة مدى</h4>
+<p class="text-xs text-on-surface-variant font-label">MADA • البنك الأهلي</p>
+</div>
+</div>
+</div>
+<p class="text-lg font-bold tracking-widest font-label mb-6">•••• •••• •••• 8821</p>
+<div class="flex justify-between items-center">
+<span class="text-xs text-on-surface-variant font-label">EXP 12/24</span>
+<div class="flex gap-1">
+<button class="text-xs font-bold text-primary hover:underline px-2 py-1">تعيين كافتراضية</button>
+</div>
+</div>
+</div>
+<!-- Apple Pay Section -->
+<div class="lg:col-span-2 bg-inverse-surface text-white p-6 rounded-xl shadow-lg flex items-center justify-between relative overflow-hidden group">
+<div class="relative z-10">
+<div class="flex items-center gap-4 mb-2">
+<span class="material-symbols-outlined text-4xl" data-icon="apple" style="font-variation-settings: 'FILL' 1;">ios</span>
+<h4 class="text-xl font-bold font-headline">Apple Pay</h4>
+</div>
+<p class="text-zinc-400 text-sm max-w-md">استمتع بدفع آمن وسريع بضغطة واحدة باستخدام Apple Pay. لا نحتاج لتخزين بيانات بطاقتك.</p>
+</div>
+<div class="relative z-10 flex flex-col items-end gap-3">
+<div class="flex items-center gap-2 text-emerald-400">
+<span class="material-symbols-outlined" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-bold">مفعل</span>
+</div>
+<button class="bg-white text-black px-6 py-2 rounded-lg font-bold hover:bg-zinc-200 transition-colors text-sm">إعدادات المحفظة</button>
+</div>
+<!-- Decorative element -->
+<div class="absolute -left-10 -bottom-10 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
+</div>
+<!-- Digital Wallet / Credits -->
+<div class="bg-surface-container p-6 rounded-xl relative">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance_wallet">account_balance_wallet</span>
+<h4 class="font-bold">رصيد المحفظة</h4>
+</div>
+<div class="mb-6">
+<p class="text-3xl font-bold text-primary tracking-tight">125.00 <span class="text-sm font-label text-on-surface-variant">SAR</span></p>
+<p class="text-xs text-on-surface-variant mt-1">رصيد متاح للاستخدام في مشترياتك القادمة</p>
+</div>
+<button class="w-full py-2 bg-primary-container text-on-primary-container font-bold rounded-lg hover:brightness-110 transition-all text-sm">
+                        شحن المحفظة
+                    </button>
+</div>
+</div>
+<!-- Security Trust Badges -->
+<div class="mt-12 p-8 bg-surface-container-low rounded-2xl flex flex-wrap items-center justify-center gap-12 border border-outline-variant/10">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-emerald-600" data-icon="encrypted">encrypted</span>
+<span class="text-sm font-medium">تشفير SSL آمن 100%</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-emerald-600" data-icon="verified_user">verified_user</span>
+<span class="text-sm font-medium">متوافق مع معايير PCI DSS</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-emerald-600" data-icon="gpp_good">gpp_good</span>
+<span class="text-sm font-medium">حماية المشتري المتقدمة</span>
+</div>
+</div>
+<!-- Promotion / Banner -->
+<div class="mt-8 rounded-2xl h-48 relative overflow-hidden flex items-center px-12">
+<img alt="Cashback promotion" class="absolute inset-0 w-full h-full object-cover" data-alt="Dynamic shot of a credit card being used at a grocery store checkout with warm cinematic lighting and vibrant fresh produce" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdIwJ-7mh2JhjbbZNS5fsJ8D40UAxq0OwhJU7ONfIv1KT41IkHTaj5aDZ7O1lObO8rkAEZM2VCXw-h3eCdjszzvT4jvYuMljlkHrdGGlaL3WI_Ckd-0EFy9nKdVG827gSAgAfjF-193YIOL-i4yLcBgisCUwGm0jvCLkzGAV-_zuXZI3nbMUtc7JsochN-6ZQ7lxevbaIpJD9M0qZG3fs2tyclcrXAzjQuESGiAdU48ClKUelZBlUNLkgCDmfuwtTeBVCXodMqmys"/>
+<div class="absolute inset-0 bg-gradient-to-l from-black/80 via-black/40 to-transparent"></div>
+<div class="relative z-10 text-white max-w-sm">
+<h3 class="text-2xl font-bold mb-2">كاش باك 10%!</h3>
+<p class="text-zinc-300 text-sm mb-4">عند الدفع باستخدام بطاقات مصرف الراجحي بحد أقصى 50 ريال.</p>
+<button class="bg-primary text-white px-5 py-2 rounded-lg font-bold text-sm hover:scale-105 transition-transform">استخدم العرض الآن</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar for Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-zinc-100 flex justify-around py-3 px-2 z-50">
+<a class="flex flex-col items-center gap-1 text-zinc-400" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[10px] font-medium">الرئيسية</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-zinc-400" href="#">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+<span class="text-[10px] font-medium">التصنيفات</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-zinc-400" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_basket">shopping_basket</span>
+<span class="text-[10px] font-medium">السلة</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-emerald-700" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-[10px] font-bold">حسابي</span>
+</a>
+</nav>
+<!-- FAB Suppression Logic check: Transactional/Settings-like pages shouldn't have primary action FAB -->
+</body></html>
