@@ -1,7 +1,9 @@
+"use client";
 import Link from "next/link";
-import Image from "next/image";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function Header() {
+  const { user, logout } = useAuth();
   return (
     <>
       <header className="fixed top-0 z-50 w-full bg-white/80 dark:bg-emerald-950/80 backdrop-blur-xl shadow-sm shadow-emerald-900/5 transition-all duration-300">
@@ -64,12 +66,29 @@ export default function Header() {
               </div>
 
               <div className="flex items-center gap-5">
-                <Link href="/dashboard" className="flex flex-col items-center group">
-                  <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">
-                    person
-                  </span>
-                  <span className="text-[10px] mt-1 font-medium">حسابي</span>
-                </Link>
+                {user ? (
+                  <>
+                    <Link href="/dashboard" className="flex flex-col items-center group">
+                      <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">
+                        person
+                      </span>
+                      <span className="text-[10px] mt-1 font-medium">حسابي</span>
+                    </Link>
+                    <button onClick={logout} className="flex flex-col items-center group">
+                      <span className="material-symbols-outlined text-on-surface-variant group-hover:text-red-500 transition-colors">
+                        logout
+                      </span>
+                      <span className="text-[10px] mt-1 font-medium">خروج</span>
+                    </button>
+                  </>
+                ) : (
+                  <Link href="/login" className="flex flex-col items-center group">
+                    <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">
+                      login
+                    </span>
+                    <span className="text-[10px] mt-1 font-medium">دخول</span>
+                  </Link>
+                )}
                 <button className="flex flex-col items-center group relative">
                   <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">
                     favorite
@@ -136,10 +155,17 @@ export default function Header() {
           <span className="text-[10px] font-medium">السلة</span>
           <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/4 bg-secondary text-white text-[8px] w-4 h-4 rounded-full flex items-center justify-center">3</span>
         </Link>
-        <Link href="/dashboard" className="flex flex-col items-center gap-1 text-on-surface-variant">
-          <span className="material-symbols-outlined">person</span>
-          <span className="text-[10px] font-medium">حسابي</span>
-        </Link>
+        {user ? (
+          <Link href="/dashboard" className="flex flex-col items-center gap-1 text-on-surface-variant">
+            <span className="material-symbols-outlined">person</span>
+            <span className="text-[10px] font-medium">حسابي</span>
+          </Link>
+        ) : (
+          <Link href="/login" className="flex flex-col items-center gap-1 text-on-surface-variant">
+            <span className="material-symbols-outlined">login</span>
+            <span className="text-[10px] font-medium">دخول</span>
+          </Link>
+        )}
       </div>
     </>
   );

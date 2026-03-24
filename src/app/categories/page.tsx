@@ -1,23 +1,43 @@
-import Link from "next/link";
+"use client";
+import { useEffect, useState } from "react";
+import LinkNext from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { db } from "@/lib/firebase";
+import { collection, onSnapshot } from "firebase/firestore";
 
-const categories = [
-  { id: 1, name: "خضار", icon: "eco", items: 120, color: "bg-emerald-50 text-emerald-600 border-emerald-100" },
-  { id: 2, name: "فواكه", icon: "fiber_manual_record", items: 85, color: "bg-orange-50 text-orange-600 border-orange-100" },
-  { id: 3, name: "ألبان وأجبان", icon: "egg", items: 64, color: "bg-blue-50 text-blue-600 border-blue-100" },
-  { id: 4, name: "مخبوزات", icon: "bakery_dining", items: 42, color: "bg-amber-50 text-amber-700 border-amber-100" },
-  { id: 5, name: "لحوم", icon: "kebab_dining", items: 30, color: "bg-red-50 text-red-700 border-red-100" },
-  { id: 6, name: "دواجن", icon: "set_meal", items: 25, color: "bg-pink-50 text-pink-700 border-pink-100" },
-  { id: 7, name: "مجمدات", icon: "ac_unit", items: 150, color: "bg-cyan-50 text-cyan-700 border-cyan-100" },
-  { id: 8, name: "مشروبات", icon: "local_drink", items: 95, color: "bg-purple-50 text-purple-700 border-purple-100" },
-  { id: 9, name: "سناكات", icon: "cookie", items: 210, color: "bg-yellow-50 text-yellow-800 border-yellow-100" },
-  { id: 10, name: "منظفات", icon: "cleaning_services", items: 88, color: "bg-slate-50 text-slate-700 border-slate-200" },
-  { id: 11, name: "احتياجات منزلية", icon: "home_work", items: 130, color: "bg-indigo-50 text-indigo-700 border-indigo-100" },
-  { id: 12, name: "عروض مذهلة", icon: "auto_awesome", items: 45, color: "bg-rose-50 text-rose-600 border-rose-100 shadow-sm shadow-rose-200" },
+const staticCategories = [
+  { id: 1, name: "خضار", icon: "eco", color: "bg-emerald-50 text-emerald-600 border-emerald-100" },
+  { id: 2, name: "فواكه", icon: "fiber_manual_record", color: "bg-orange-50 text-orange-600 border-orange-100" },
+  { id: 3, name: "ألبان وأجبان", icon: "egg", color: "bg-blue-50 text-blue-600 border-blue-100" },
+  { id: 4, name: "مخبوزات", icon: "bakery_dining", color: "bg-amber-50 text-amber-700 border-amber-100" },
+  { id: 5, name: "لحوم", icon: "kebab_dining", color: "bg-red-50 text-red-700 border-red-100" },
+  { id: 6, name: "دواجن", icon: "set_meal", color: "bg-pink-50 text-pink-700 border-pink-100" },
+  { id: 7, name: "مجمدات", icon: "ac_unit", color: "bg-cyan-50 text-cyan-700 border-cyan-100" },
+  { id: 8, name: "مشروبات", icon: "local_drink", color: "bg-purple-50 text-purple-700 border-purple-100" },
+  { id: 9, name: "سناكات", icon: "cookie", color: "bg-yellow-50 text-yellow-800 border-yellow-100" },
+  { id: 10, name: "منظفات", icon: "cleaning_services", color: "bg-slate-50 text-slate-700 border-slate-200" },
+  { id: 11, name: "احتياجات منزلية", icon: "home_work", color: "bg-indigo-50 text-indigo-700 border-indigo-100" },
+  { id: 12, name: "عروض مذهلة", icon: "auto_awesome", color: "bg-rose-50 text-rose-600 border-rose-100 shadow-sm shadow-rose-200" },
 ];
 
 export default function CategoriesPage() {
+  const [counts, setCounts] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(collection(db, "products"), (snapshot) => {
+      const newCounts: Record<string, number> = {};
+      snapshot.docs.forEach(doc => {
+        const cat = doc.data().category;
+        if (cat) {
+          newCounts[cat] = (newCounts[cat] || 0) + 1;
+        }
+      });
+      setCounts(newCounts);
+    });
+    return () => unsubscribe();
+  }, []);
+
   return (
     <>
       <Header />
@@ -25,12 +45,14 @@ export default function CategoriesPage() {
         {/* Breadcrumb */}
         <div className="max-w-screen-2xl mx-auto px-6 mb-8">
           <div className="flex items-center gap-2 text-xs font-medium text-on-surface-variant">
-            <Link href="/" className="hover:text-primary transition-colors flex items-center gap-1">
+          <div className="flex items-center gap-2 text-xs font-medium text-on-surface-variant">
+            <LinkNext href="/" className="hover:text-primary transition-colors flex items-center gap-1">
               <span className="material-symbols-outlined text-[14px]">home</span>
               الرئيسية
-            </Link>
+            </LinkNext>
             <span className="material-symbols-outlined text-[14px]">chevron_left</span>
             <span className="text-on-surface font-bold">جميع الأقسام</span>
+          </div>
           </div>
         </div>
 
@@ -42,8 +64,8 @@ export default function CategoriesPage() {
 
           {/* Categories Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-            {categories.map((category) => (
-              <Link 
+            {staticCategories.map((category) => (
+              <LinkNext 
                 href="/products" 
                 key={category.id} 
                 className="bg-white rounded-[2rem] p-6 flex flex-col items-center gap-4 group hover:shadow-xl hover:shadow-emerald-900/5 transition-all duration-300 transform hover:-translate-y-1"
@@ -55,9 +77,9 @@ export default function CategoriesPage() {
                 </div>
                 <div className="text-center">
                   <h3 className="font-bold text-on-surface font-headline text-lg group-hover:text-primary transition-colors">{category.name}</h3>
-                  <p className="text-xs text-outline mt-1 font-medium">{category.items} منتجات</p>
+                  <p className="text-xs text-outline mt-1 font-medium">{counts[category.name] || 0} منتجات</p>
                 </div>
-              </Link>
+              </LinkNext>
             ))}
           </div>
 

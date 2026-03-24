@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, IBM_Plex_Sans_Arabic, Inter } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -43,7 +44,9 @@ export default function RootLayout({
         `}</style>
       </head>
       <body className="flex min-h-screen flex-col overscroll-none">
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

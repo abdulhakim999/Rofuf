@@ -1,9 +1,30 @@
+"use client";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { db } from "@/lib/firebase";
+import { collection, onSnapshot, query, limit } from "firebase/firestore";
+import { Product } from "@/types/product";
 
 export default function Home() {
+  const [flashDeals, setFlashDeals] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const q = query(collection(db, "products"), limit(5));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const fetched = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      } as Product));
+      setFlashDeals(fetched);
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
+
   return (
     <>
       <Header />
@@ -186,153 +207,46 @@ export default function Home() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-              {/* Product Card 1 */}
-              <div className="bg-white rounded-3xl p-5 group relative transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-950/5 flex flex-col">
-                <button className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-outline hover:text-secondary transition-colors">
-                  <span className="material-symbols-outlined text-xl">favorite</span>
-                </button>
-                <div className="absolute top-4 left-4 z-10 bg-secondary text-white text-[10px] font-bold px-3 py-1 rounded-lg">-٣٥٪</div>
-                <div className="relative aspect-square mb-4 overflow-hidden rounded-2xl">
-                  <Image
-                    alt="pineapple"
-                    fill
-                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoTM6MhxbIIhtdGca1EOvCKTRVirl4NUiceb0KdulsX0aQxLoKeRbRPcFn_WIpduU1AgSy5zxThQqgTNecslPkb3OsLpL8sAZ45X-2fFQRNCgWB-gjO0mnZE4v5yeNHFve-67yRpAi-trv3yJTTNdL5ikTthdFq6CVYMV7YgkqhbukIdAYnJ8GEj8cSjQWUHYFCRCkNN0mp3rrqSyxQ0lm8ll3a7x5Rm7n8L6qVEMbQLzC4VuN11WhW-0p9A858lubnD0rdGXqzPE"
-                  />
-                </div>
-                <div className="mb-2">
-                  <span className="text-[10px] text-outline font-bold uppercase tracking-wider">خضار وفواكه</span>
-                  <h3 className="text-sm font-bold text-on-surface line-clamp-2 mt-1">أناناس فاخر - حبة واحدة</h3>
-                  <p className="text-[11px] text-on-surface-variant mt-1">حوالي ١.٢ كجم</p>
-                </div>
-                <div className="flex items-center gap-1 mb-4">
-                  <span className="material-symbols-outlined text-amber-400 text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                  <span className="text-[10px] font-bold">٤.٩</span>
-                  <span className="text-[10px] text-outline">(١٢٠ تقييم)</span>
-                </div>
-                <div className="mt-auto flex items-end justify-between">
-                  <div className="flex flex-col">
-                    <span className="text-secondary text-lg font-bold">١٢.٥٠ ر.س</span>
-                    <span className="text-xs text-outline line-through">١٨.٧٥ ر.س</span>
-                  </div>
-                  <button className="w-12 h-12 rounded-2xl bg-primary text-on-primary flex items-center justify-center hover:bg-primary-container transition-all shadow-lg shadow-primary/20">
-                    <span className="material-symbols-outlined">add_shopping_cart</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* Product Card 2 */}
-              <div className="bg-white rounded-3xl p-5 group relative transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-950/5 flex flex-col">
-                <div className="absolute top-4 left-4 z-10 bg-secondary text-white text-[10px] font-bold px-3 py-1 rounded-lg">-٢٠٪</div>
-                <div className="relative aspect-square mb-4 overflow-hidden rounded-2xl">
-                  <Image
-                    alt="milk"
-                    fill
-                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4EcBJcIWZ5dG5O9QW67nJBWOsFAsie6hs2nQDATSnMIh6CLAQ4bglXckwc7m3d8DTv1GooljAoLRf1wSw1MmCC3MWPDV2-VTqDCdzLQQye1VJcY15xWyufrTW7_jgiWSl2Gv4xg72nWUpyRi_0hOoTOymqwpPv7cWG7dJItXp_whMhsdR5M5HEcQO3NftNPV94GJgwmN2-vl5YLy4MzZP3gzoP50QPZPJm7PwVFtcVKC-46jdFALoFXRosVPICaxgrY5VrzAmPs4"
-                  />
-                </div>
-                <div className="mb-2">
-                  <span className="text-[10px] text-outline font-bold uppercase tracking-wider">ألبان</span>
-                  <h3 className="text-sm font-bold text-on-surface line-clamp-2 mt-1">حليب طازج كامل الدسم - ٢ لتر</h3>
-                  <p className="text-[11px] text-on-surface-variant mt-1">عبوة بلاستيكية</p>
-                </div>
-                <div className="flex items-center gap-1 mb-4">
-                  <span className="material-symbols-outlined text-amber-400 text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                  <span className="text-[10px] font-bold">٥.٠</span>
-                </div>
-                <div className="mt-auto flex items-end justify-between">
-                  <div className="flex flex-col">
-                    <span className="text-secondary text-lg font-bold">٩.٠٠ ر.س</span>
-                    <span className="text-xs text-outline line-through">١١.٥٠ ر.س</span>
-                  </div>
-                  <button className="w-12 h-12 rounded-2xl bg-primary text-on-primary flex items-center justify-center hover:bg-primary-container transition-all shadow-lg shadow-primary/20">
-                    <span className="material-symbols-outlined">add_shopping_cart</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* Product Card 3 */}
-              <div className="bg-white rounded-3xl p-5 group relative transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-950/5 flex flex-col">
-                <div className="relative aspect-square mb-4 overflow-hidden rounded-2xl">
-                  <Image
-                    alt="eggs"
-                    fill
-                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6QE3xSnw38y3iOK6eyn6fUSHbZUTKhXCEbXOTVIDI2VlS3lDAeUowBZXsnItecS6cE4z1zzgEla_ZTM9wpTYt91tQP6VqqUU85yBFUIqQnuPx-vUuWpo2X1sHM_likav6zPc7HPRbfejm_1dQlCFXR7AaSGCpQ6UULAHus1_NUWqq83m637LdrMINWIrjYWS1jVlgX_iKC4UGmpsarn9aMb8FxE9gpzQyalhiDVb_cMUxB5B7jiwNbIS29c4e84QQoOqDPJyGpZ0"
-                  />
-                </div>
-                <div className="mb-2">
-                  <span className="text-[10px] text-outline font-bold uppercase tracking-wider">ألبان وبيض</span>
-                  <h3 className="text-sm font-bold text-on-surface line-clamp-2 mt-1">بيض دجاج طازج - طبق ٣٠ حبة</h3>
-                  <p className="text-[11px] text-on-surface-variant mt-1">كبير الحجم</p>
-                </div>
-                <div className="flex items-center gap-1 mb-4">
-                  <span className="material-symbols-outlined text-amber-400 text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                  <span className="text-[10px] font-bold">٤.٧</span>
-                </div>
-                <div className="mt-auto flex items-end justify-between">
-                  <div className="flex flex-col">
-                    <span className="text-primary text-lg font-bold">٢٢.٠٠ ر.س</span>
-                  </div>
-                  <button className="w-12 h-12 rounded-2xl bg-primary text-on-primary flex items-center justify-center hover:bg-primary-container transition-all shadow-lg shadow-primary/20">
-                    <span className="material-symbols-outlined">add_shopping_cart</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* Product Card 4 */}
-              <div className="bg-white rounded-3xl p-5 group relative transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-950/5 flex flex-col">
-                <div className="absolute top-4 left-4 z-10 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-lg">الأكثر مبيعاً</div>
-                <div className="relative aspect-square mb-4 overflow-hidden rounded-2xl">
-                  <Image
-                    alt="apples"
-                    fill
-                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp6jFEqV-OYVGw2lGRuMdjkooM4OBC_5vGe6-xSCm3SmhI2Rl0OI-GA7ixu-pI7xn0k3vy5CXQI9uRISs4xI53EYR0dWA3cm7PYYJLe427CZog9nArrZZjufEM6nynzufUlB7UiT3kFlseJEbsqYtodO5-iBag41yK2NXwjhJnY5-ADcTYmBzlsQGfY-aehuwpFf1rfRpW4Z6dfxZTyDwt5TOZXI1B7ATGabjcf19Of8Z7bjYrMdM0dW_YmPT7ywdr09mCKDgjjf8"
-                  />
-                </div>
-                <div className="mb-2">
-                  <span className="text-[10px] text-outline font-bold uppercase tracking-wider">خضار وفواكه</span>
-                  <h3 className="text-sm font-bold text-on-surface line-clamp-2 mt-1">تفاح جالا أحمر - كيس ١ كجم</h3>
-                  <p className="text-[11px] text-on-surface-variant mt-1">مستورد طازج</p>
-                </div>
-                <div className="mt-auto flex items-end justify-between">
-                  <div className="flex flex-col">
-                    <span className="text-primary text-lg font-bold">٦.٥٠ ر.س</span>
-                  </div>
-                  <button className="w-12 h-12 rounded-2xl bg-primary text-on-primary flex items-center justify-center hover:bg-primary-container transition-all shadow-lg shadow-primary/20">
-                    <span className="material-symbols-outlined">add_shopping_cart</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* Product Card 5 */}
-              <div className="bg-white rounded-3xl p-5 group relative transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-950/5 flex flex-col">
-                <div className="relative aspect-square mb-4 overflow-hidden rounded-2xl">
-                  <Image
-                    alt="baguette"
-                    fill
-                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0V2uT8xZAVI30YRnzfIUk-_mPAFgxFVrHaGv6eNLTnhXQ-7peSzYMKyKWcMuNvY7rRWZL2y9fyMgBGZVtXV1MKoDYuD3fPBINc_6ZHw8WSxxXpzY1BXzRR19Gg8yt0b2rtmR5bDWJrCyqt81LscQjJmbG4PnGoxOF1lU7qqNcxLLUldHpNCBQyFui6hUqcQtk_pI4aOfJB08JXhujqhWC5VazyQ4D5-tL7uCFci9lDuvSRBRI50meZ1ekK9Kg2xE6FeVApCauvAs"
-                  />
-                </div>
-                <div className="mb-2">
-                  <span className="text-[10px] text-outline font-bold uppercase tracking-wider">مخبوزات</span>
-                  <h3 className="text-sm font-bold text-on-surface line-clamp-2 mt-1">خبز باجيت فرنسي طازج - حبتين</h3>
-                  <p className="text-[11px] text-on-surface-variant mt-1">مخبوز يومياً</p>
-                </div>
-                <div className="mt-auto flex items-end justify-between">
-                  <div className="flex flex-col">
-                    <span className="text-primary text-lg font-bold">٤.٥٠ ر.س</span>
-                  </div>
-                  <div className="flex items-center bg-surface-container rounded-xl overflow-hidden">
-                    <button className="w-8 h-8 flex items-center justify-center text-primary font-bold hover:bg-emerald-100 transition-colors">+</button>
-                    <span className="px-3 text-xs font-bold">١</span>
-                    <button className="w-8 h-8 flex items-center justify-center text-primary font-bold hover:bg-emerald-100 transition-colors">-</button>
-                  </div>
-                </div>
-              </div>
+              {loading ? (
+                <div className="col-span-full text-center py-10 text-emerald-900 font-bold">جاري تحميل العروض...</div>
+              ) : flashDeals.length > 0 ? (
+                flashDeals.map((product) => (
+                  <Link href={`/products/${product.id}`} key={product.id} className="bg-white rounded-3xl p-5 group relative transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-950/5 flex flex-col">
+                    <button className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-outline hover:text-secondary transition-colors">
+                      <span className="material-symbols-outlined text-xl">favorite</span>
+                    </button>
+                    {product.discount && product.discount > 0 && (
+                      <div className="absolute top-4 left-4 z-10 bg-secondary text-white text-[10px] font-bold px-3 py-1 rounded-lg">-{product.discount}٪</div>
+                    )}
+                    <div className="relative aspect-square mb-4 overflow-hidden rounded-2xl">
+                      <Image
+                        alt={product.name}
+                        fill
+                        className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
+                        src={product.image || "/placeholder.png"}
+                      />
+                    </div>
+                    <div className="mb-2">
+                      <span className="text-[10px] text-outline font-bold uppercase tracking-wider">{product.category}</span>
+                      <h3 className="text-sm font-bold text-on-surface line-clamp-2 mt-1">{product.name}</h3>
+                      <p className="text-[11px] text-on-surface-variant mt-1">{product.desc}</p>
+                    </div>
+                    <div className="mt-auto flex items-end justify-between">
+                      <div className="flex flex-col">
+                        <span className="text-secondary text-lg font-bold">{product.price?.toFixed(2)} ر.س</span>
+                        {product.oldPrice && (
+                          <span className="text-xs text-outline line-through">{product.oldPrice?.toFixed(2)} ر.س</span>
+                        )}
+                      </div>
+                      <button className="w-12 h-12 rounded-2xl bg-primary text-on-primary flex items-center justify-center hover:bg-primary-container transition-all shadow-lg shadow-primary/20">
+                        <span className="material-symbols-outlined">add_shopping_cart</span>
+                      </button>
+                    </div>
+                  </Link>
+                ))
+              ) : (
+                <div className="col-span-full text-center py-10 text-on-surface-variant font-medium">لا توجد عروض حالياً</div>
+              )}
             </div>
           </div>
         </section>
